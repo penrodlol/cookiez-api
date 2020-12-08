@@ -3,11 +3,11 @@
 # ------------------------------------------------------
 
 type Cookie {
-  id: ID!
+  id: ID
+  updated: DateTime
   environment: String!
   type: String!
   snippet: String!
-  updated: DateTime!
 }
 
 """

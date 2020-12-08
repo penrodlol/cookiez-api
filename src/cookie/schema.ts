@@ -1,46 +1,24 @@
-import { Optional } from "@nestjs/common";
-import { Field, FieldOptions, ID, ObjectType } from "@nestjs/graphql";
-import { Prop, PropOptions, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { IsMongoId } from 'class-validator';
-import { ObjectID } from "mongodb";
+import { Field, ObjectType, PartialType } from "@nestjs/graphql";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from 'mongoose';
-
-const propOptions: PropOptions = {
-  required: true,
-  trim: true,
-};
-
-const fieldOptions: FieldOptions = {
-  nullable: false
-};
+import { DEFAULT_FIELD_OPTIONS, DEFAULT_PROP_OPTIONS, DEFAULT_SCHEMA, DEFAULT_SCHEMA_OPTIONS } from "../const";
 
 export type CookieDocument = Cookie & Document;
 
-@Schema({ timestamps: {
-  updatedAt: 'updated',
-  createdAt: false
-}})
+@Schema(DEFAULT_SCHEMA_OPTIONS)
 @ObjectType()
-export class Cookie {
-  @Field(() => ID, fieldOptions)
-  @Optional()
-  @IsMongoId()
-  id: ObjectID;
-
-  @Field(fieldOptions)
-  @Prop(propOptions)
+export class Cookie extends PartialType(DEFAULT_SCHEMA) {
+  @Field(DEFAULT_FIELD_OPTIONS)
+  @Prop(DEFAULT_PROP_OPTIONS)
   environment: string;
 
-  @Field(fieldOptions)
-  @Prop(propOptions)
+  @Field(DEFAULT_FIELD_OPTIONS)
+  @Prop(DEFAULT_PROP_OPTIONS)
   type: string;
 
-  @Field(fieldOptions)
-  @Prop(propOptions)
+  @Field(DEFAULT_FIELD_OPTIONS)
+  @Prop(DEFAULT_PROP_OPTIONS)
   snippet: string;
-
-  @Field(fieldOptions)
-  updated: Date;
 }
 
 export const CookieSchema = SchemaFactory.createForClass(Cookie);

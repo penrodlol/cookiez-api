@@ -9,8 +9,10 @@ import { CookieModule } from './cookie/cookie.module';
     CookieModule,
     ConfigModule.forRoot({ isGlobal: true }),
     GraphQLModule.forRoot({      
+      installSubscriptionHandlers: true,
+      context: ({ req }) => ({ req }),
       autoSchemaFile: 'schema.gql', 
-      path: '/cookiez',
+      useGlobalPrefix: true,
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),
   ],

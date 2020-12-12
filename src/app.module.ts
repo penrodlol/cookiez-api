@@ -13,6 +13,7 @@ import { CookieModule } from './cookie/cookie.module';
       context: ({ req }) => ({ req }),
       autoSchemaFile: 'schema.gql', 
       useGlobalPrefix: true,
+      path: '/cookiez',
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),
   ],

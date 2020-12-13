@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CookieModule } from './cookie/cookie.module';
+import { EnvironmentModule } from './environment/environment.module';
+import { TypeModule } from './type/type.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { CookieModule } from './cookie/cookie.module';
       path: '/cookiez',
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),
+    EnvironmentModule,
+    TypeModule,
   ],
 })
 export class AppModule { }

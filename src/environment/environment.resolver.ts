@@ -5,11 +5,11 @@ import { Environment } from './schema';
 
 @Resolver()
 export class EnvironmentResolver {
-  constructor(private Environmentz: EnvironmentService) { }
+  constructor(private environments: EnvironmentService) { }
 
   @Query(() => [Environment], { name: 'environments' })
-  async getEnvironmentz() {
-    return this.Environmentz.findAll();
+  async getEnvironment() {
+    return this.environments.findAll();
   }
 
   @Mutation(() => Environment)
@@ -18,7 +18,7 @@ export class EnvironmentResolver {
       type: () => UpdateEnvironmentDTO
     }) dto: UpdateEnvironmentDTO
   ) {
-    return this.Environmentz.updateOne(dto);
+    return this.environments.updateOne(dto);
   }
 
   @Mutation(() => Environment)
@@ -27,7 +27,7 @@ export class EnvironmentResolver {
       type: () => AddEnvironmentDTO
     }) dto: AddEnvironmentDTO
   ) {
-    return this.Environmentz.addOne(dto);
+    return this.environments.addOne(dto);
   }
 
   @Mutation(() => Environment)
@@ -36,6 +36,6 @@ export class EnvironmentResolver {
       type: () => DeleteEnvironmentDTO
     }) dto: DeleteEnvironmentDTO
   ) {
-    return this.Environmentz.deleteOne(dto);
+    return this.environments.deleteOne(dto);
   }
 }

@@ -14,6 +14,7 @@ export class TypeService {
   async findAll() {
     return this.model
       .find()
+      .sort({ updated: 'desc' })
       .exec();
   }
   

@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CookieModule } from './cookie/cookie.module';
 import { EnvironmentModule } from './environment/environment.module';
 import { TypeModule } from './type/type.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { TypeModule } from './type/type.module';
     MongooseModule.forRoot(process.env.MONGO_URI),
     EnvironmentModule,
     TypeModule,
+    AuthModule,
   ],
 })
 export class AppModule { }

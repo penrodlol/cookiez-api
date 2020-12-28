@@ -1,7 +1,7 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
-import { GqlAuthGuard } from "./auth/auth-guard";
-import { ExceptionsFilter } from "./exception/exception.filter";
+import { GqlAuthGuard } from "./core/auth/auth-guard";
+import { ExceptionsFilter } from "./core/exception/exception.filter";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

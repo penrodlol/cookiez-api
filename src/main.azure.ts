@@ -1,8 +1,8 @@
 import { INestApplication } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
-import { GqlAuthGuard } from "./auth/auth-guard";
-import { ExceptionsFilter } from "./exception/exception.filter";
+import { GqlAuthGuard } from "./core/auth/auth-guard";
+import { ExceptionsFilter } from "./core/exception/exception.filter";
 
 export async function createApp(): Promise<INestApplication> {
   const app = await NestFactory.create(AppModule);

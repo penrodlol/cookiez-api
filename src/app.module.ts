@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CookieModule } from './cookie/cookie.module';
-import { EnvironmentModule } from './environment/environment.module';
-import { TypeModule } from './type/type.module';
-import { AuthModule } from './auth/auth.module';
+import { CookieModule } from './feature/cookie/cookie.module';
+import { EnvironmentModule } from './feature/environment/environment.module';
+import { TypeModule } from './feature/type/type.module';
+import { AuthModule } from './core/auth/auth.module';
 
 @Module({
   imports: [

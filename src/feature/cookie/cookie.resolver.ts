@@ -1,4 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { UID } from 'src/shared/decorators';
 import { CookieService } from './cookie.service';
 import { AddCookieDTO, DeleteCookieDTO, UpdateCookieDTO } from './dto';
 import { Cookie } from './schema';
@@ -8,8 +9,10 @@ export class CookieResolver {
   constructor(private cookiez: CookieService) { }
 
   @Query(() => [Cookie], { name: 'cookies' })
-  async getCookiez() {
-    return this.cookiez.findAll();
+  async getCookiez(
+    @UID() uid: any,
+  ) {
+    return this.cookiez.findAll(uid);
   }
 
   @Mutation(() => Cookie)
@@ -23,11 +26,12 @@ export class CookieResolver {
 
   @Mutation(() => Cookie)
   async addCookie(
+    @UID() uid: any,
     @Args('dto', {
       type: () => AddCookieDTO
     }) dto: AddCookieDTO
   ) {
-    return this.cookiez.addOne(dto);
+    return this.cookiez.addOne(dto, uid);
   }
 
   @Mutation(() => Cookie)

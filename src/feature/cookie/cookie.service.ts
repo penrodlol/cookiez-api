@@ -11,9 +11,9 @@ export class CookieService {
     private model: Model<CookieDocument>
   ) { }
 
-  async findAll() {
+  async findAll(uid: string) {
     return this.model
-      .find()
+      .find({ uid })
       .sort({ updated: 'desc' })
       .exec();
   }
@@ -33,8 +33,11 @@ export class CookieService {
       .exec();
   }
 
-  async addOne(dto: AddCookieDTO) {
-    return new this.model(dto).save();
+  async addOne(
+    dto: AddCookieDTO,
+    uid: string,
+  ) {
+    return new this.model({ ...dto, uid }).save();
   }
 
   async deleteOne(dto: DeleteCookieDTO) {

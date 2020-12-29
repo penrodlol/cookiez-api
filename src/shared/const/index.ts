@@ -29,7 +29,4 @@ export class DEFAULT_SCHEMA {
 
   @Field(DEFAULT_FIELD_OPTIONS)
   updated: Date;
-
-  @Prop(DEFAULT_PROP_OPTIONS)
-  uid: string;
 }

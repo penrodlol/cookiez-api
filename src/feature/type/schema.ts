@@ -11,6 +11,9 @@ export class Type extends PartialType(DEFAULT_SCHEMA) {
   @Field(DEFAULT_FIELD_OPTIONS)
   @Prop(DEFAULT_PROP_OPTIONS)
   name: string;
+
+  @Prop(DEFAULT_PROP_OPTIONS)
+  uid: string;
 }
 
 export const TypeSchema = SchemaFactory.createForClass(Type);

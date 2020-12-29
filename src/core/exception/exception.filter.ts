@@ -9,7 +9,7 @@ export class ExceptionsFilter implements ExceptionFilter {
 
     const message = exception.status === 401 ?
       ExceptionMessages.UNAUTHORIZED :
-      ExceptionMessages.INTERNAL_SERVER_ERROR;
+      ExceptionMessages.GENERIC;
 
     return host.getType().includes('graphql') ?
       new GraphQLError(message) :

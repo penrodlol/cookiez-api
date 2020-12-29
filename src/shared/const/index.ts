@@ -1,6 +1,6 @@
 import { Optional } from "@nestjs/common";
 import { Field, FieldOptions, ID, ObjectType } from "@nestjs/graphql";
-import { Prop, PropOptions, SchemaOptions } from "@nestjs/mongoose";
+import { PropOptions, SchemaOptions } from "@nestjs/mongoose";
 import { IsMongoId } from "class-validator";
 import { ObjectID } from "mongodb";
 

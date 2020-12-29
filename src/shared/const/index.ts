@@ -1,6 +1,6 @@
 import { Optional } from "@nestjs/common";
 import { Field, FieldOptions, ID, ObjectType } from "@nestjs/graphql";
-import { PropOptions, SchemaOptions } from "@nestjs/mongoose";
+import { Prop, PropOptions, SchemaOptions } from "@nestjs/mongoose";
 import { IsMongoId } from "class-validator";
 import { ObjectID } from "mongodb";
 
@@ -29,4 +29,7 @@ export class DEFAULT_SCHEMA {
 
   @Field(DEFAULT_FIELD_OPTIONS)
   updated: Date;
+
+  @Prop(DEFAULT_PROP_OPTIONS)
+  uid: string;
 }

@@ -19,9 +19,6 @@ export class Cookie extends PartialType(DEFAULT_SCHEMA) {
   @Field(DEFAULT_FIELD_OPTIONS)
   @Prop(DEFAULT_PROP_OPTIONS)
   snippet: string;
-
-  @Prop(DEFAULT_PROP_OPTIONS)
-  uid: string;
 }
 
 export const CookieSchema = SchemaFactory.createForClass(Cookie);

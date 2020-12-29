@@ -2,14 +2,17 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { TypeService } from './type.service';
 import { AddTypeDTO, DeleteTypeDTO, UpdateTypeDTO } from './dto';
 import { Type } from './schema';
+import { UID } from 'src/shared/decorators';
 
 @Resolver()
 export class TypeResolver {
   constructor(private Typez: TypeService) { }
 
   @Query(() => [Type], { name: 'types' })
-  async getTypez() {
-    return this.Typez.findAll();
+  async getTypez(
+    @UID() uid: string,
+  ) {
+    return this.Typez.findAll(uid);
   }
 
   @Mutation(() => Type)
@@ -23,11 +26,12 @@ export class TypeResolver {
 
   @Mutation(() => Type)
   async addType(
+    @UID() uid: string,
     @Args('dto', {
       type: () => AddTypeDTO
     }) dto: AddTypeDTO
   ) {
-    return this.Typez.addOne(dto);
+    return this.Typez.addOne(dto, uid);
   }
 
   @Mutation(() => Type)

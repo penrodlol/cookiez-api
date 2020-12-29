@@ -11,9 +11,9 @@ export class EnvironmentService {
     private model: Model<EnvironmentDocument>
   ) { }
 
-  async findAll() {
+  async findAll(uid: string) {
     return this.model
-      .find()
+      .find({ uid })
       .sort({ updated: 'desc' })
       .exec();
   }
@@ -33,8 +33,11 @@ export class EnvironmentService {
       .exec();
   }
 
-  async addOne(dto: AddEnvironmentDTO) {
-    return new this.model(dto).save();
+  async addOne(
+    dto: AddEnvironmentDTO,
+    uid: string,
+  ) {
+    return new this.model({ ...dto, uid }).save();
   }
 
   async deleteOne(dto: DeleteEnvironmentDTO) {

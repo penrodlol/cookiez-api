@@ -2,14 +2,17 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { EnvironmentService } from './environment.service';
 import { AddEnvironmentDTO, DeleteEnvironmentDTO, UpdateEnvironmentDTO } from './dto';
 import { Environment } from './schema';
+import { UID } from 'src/shared/decorators';
 
 @Resolver()
 export class EnvironmentResolver {
   constructor(private environments: EnvironmentService) { }
 
   @Query(() => [Environment], { name: 'environments' })
-  async getEnvironment() {
-    return this.environments.findAll();
+  async getEnvironment(
+    @UID() uid: string,
+  ) {
+    return this.environments.findAll(uid);
   }
 
   @Mutation(() => Environment)
@@ -23,11 +26,12 @@ export class EnvironmentResolver {
 
   @Mutation(() => Environment)
   async addEnvironment(
+    @UID() uid: string,
     @Args('dto', {
       type: () => AddEnvironmentDTO
     }) dto: AddEnvironmentDTO
   ) {
-    return this.environments.addOne(dto);
+    return this.environments.addOne(dto, uid);
   }
 
   @Mutation(() => Environment)

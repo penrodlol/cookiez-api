@@ -11,9 +11,9 @@ export class TypeService {
     private model: Model<TypeDocument>
   ) { }
 
-  async findAll() {
+  async findAll(uid: string) {
     return this.model
-      .find()
+      .find({ uid })
       .sort({ updated: 'desc' })
       .exec();
   }
@@ -33,8 +33,11 @@ export class TypeService {
       .exec();
   }
 
-  async addOne(dto: AddTypeDTO) {
-    return new this.model(dto).save();
+  async addOne(
+    dto: AddTypeDTO,
+    uid: string,
+  ) {
+    return new this.model({ ...dto, uid }).save();
   }
 
   async deleteOne(dto: DeleteTypeDTO) {

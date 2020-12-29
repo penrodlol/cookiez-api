@@ -10,7 +10,7 @@ export class CookieResolver {
 
   @Query(() => [Cookie], { name: 'cookies' })
   async getCookiez(
-    @UID() uid: any,
+    @UID() uid: string,
   ) {
     return this.cookiez.findAll(uid);
   }
@@ -26,7 +26,7 @@ export class CookieResolver {
 
   @Mutation(() => Cookie)
   async addCookie(
-    @UID() uid: any,
+    @UID() uid: string,
     @Args('dto', {
       type: () => AddCookieDTO
     }) dto: AddCookieDTO

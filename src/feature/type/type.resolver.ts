@@ -2,7 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { TypeService } from './type.service';
 import { AddTypeDTO, DeleteTypeDTO, UpdateTypeDTO } from './dto';
 import { Type } from './schema';
-import { UID } from 'src/shared/decorators';
+import { UID } from '../../shared/decorators';
 
 @Resolver()
 export class TypeResolver {

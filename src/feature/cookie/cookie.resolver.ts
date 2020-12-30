@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { UID } from 'src/shared/decorators';
+import { UID } from '../../shared/decorators';
 import { CookieService } from './cookie.service';
 import { AddCookieDTO, DeleteCookieDTO, UpdateCookieDTO } from './dto';
 import { Cookie } from './schema';

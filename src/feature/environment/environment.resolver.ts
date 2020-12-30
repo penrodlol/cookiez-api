@@ -2,7 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { EnvironmentService } from './environment.service';
 import { AddEnvironmentDTO, DeleteEnvironmentDTO, UpdateEnvironmentDTO } from './dto';
 import { Environment } from './schema';
-import { UID } from 'src/shared/decorators';
+import { UID } from '../../shared/decorators';
 
 @Resolver()
 export class EnvironmentResolver {
